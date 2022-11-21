@@ -1,0 +1,131 @@
+@font-face {
+    font-family: "Back to the Future 2002";
+    src: url("./../fonts/BTTF.ttf");
+}
+
+@font-face {
+    font-family: 'Digital7 Monoitalic';
+    src: url("./../fonts/Digital7Monoitalic-8MDLJ.ttf");
+}
+
+body {
+    font-family: 'Lucida Sans Unicode', sans-serif;
+    background-color: #091a1f;
+}
+
+.container {
+    width: 75%;
+    margin: 30px auto 0;
+}
+
+.clock {
+    width: 55%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    width: 100%;
+}
+
+.quote {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    width: 100%;
+    min-height: 160px;
+    border-left: 7px dotted #2D9CCE;
+    font-family: 'Back to the Future 2002';
+    font-size: 23px;
+    text-transform: lowercase;
+}
+
+.quote>q {
+    display: flex;
+    padding-left: 13px;
+    background-image: linear-gradient(to right, #b50d13, #bc2013, #c32e14, #c93914, #d04415, #d65013, #db5c12, #e06811, #e5780f, #e9880f, #ed9813, #f0a81a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.quote span {
+    text-transform: uppercase;
+    padding-left: 65px;
+    letter-spacing: 2px;
+    word-spacing: 10px;
+}
+
+.time {
+    margin-top: 30px;
+    text-align: center;
+    font-family: 'Digital7 Monoitalic';
+    font-size: 140px;
+    color: #71cf65;
+    text-shadow: 0 1px 20px #71cf65;
+}
+
+.time-stopped {
+    color: #b50d13;
+    text-shadow: 0 1px 20px #b50d13;
+}
+
+.btns {
+    margin-top: 30px;
+    height: 33.33%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    margin: 0 13px;
+    color: #FFF;
+    background: transparent;
+    transition: all 0.5s;
+    position: relative;
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    width: 250px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+}
+
+.btn:hover::before {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: scale(1.2, 1.2);
+}
+
+.btn:hover::after {
+    opacity: 1;
+    transform: scale(1, 1);
+}

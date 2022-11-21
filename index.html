@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домашнє завдання №2</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+
+    <div class="container"></div>
+
+    <!-- LOAD REACT -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+
+    <!-- LOAD BABEL -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- LOAD MY SCRIPT -->
+    <script type="text/babel">
+
+        const rootNode = document.querySelector('.container');
+        const root = ReactDOM.createRoot(rootNode);
+
+
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    date: new Date(),
+                };
+            }
+
+            tick() {
+                this.setState({
+                    date: new Date(),
+                });
+            }
+
+            componentDidMount() {
+                document.querySelector('.time').classList.remove('time-stopped');
+                this.timecount = setInterval(
+                    () => this.tick(),
+                    1000
+                );
+            }
+
+            componentWillUnmount() {
+                document.querySelector('.time').classList.add('time-stopped');
+                clearInterval(this.timecount);
+            }
+
+            render() {
+                return (
+                    <div className='clock'>
+                        <div className='quote'>
+                            <q>If you're gonna build a time machine into a car,<br /><span>why not do it with some style?</span></q>
+                        </div>
+
+                        <img src="./img/bttf.png" alt="" />
+
+                        <div className='time'>{this.state.date.toLocaleTimeString()}</div>
+
+                        <div class="btns">
+                            <button onClick={() => this.componentWillUnmount()} className='btn btn-stop'>STOP</button>
+
+                            <button onClick={() => this.componentDidMount()} className='btn btn-start'>START</button></div>
+                    </div>
+                );
+            }
+        }
+
+        root.render(<Clock />);
+
+
+    </script>
+</body>
+
+</html>
